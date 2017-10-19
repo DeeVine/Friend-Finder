@@ -13,16 +13,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-//Survey questions
-var questions = [{
 
-}];
+//Provide routes to server to know what pages to send the user to
+require("./app/routing/apiRoutes")(app);
+require("./app/routing/htmlRoutes")(app);
 
-//routes
-app.get("/home", function(req, res) {
-  res.sendFile(path.join(__dirname, "home.html"));
-});
 
-app.get("/survey", function(req, res) {
-  res.sendFile(path.join(__dirname, "survey.html"));
+app.listen(PORT, function() {
+  console.log("App listening on PORT: " + PORT);
 });
