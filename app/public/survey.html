@@ -212,8 +212,8 @@
      photoUrl: $('#photo').val(),
      scores: scoreArray,
     };
-    console.log(newSurvey);
 
+    //if survey filed out entirely then post data to array;
     if(isTrue){
        $.post("/api/friends", newSurvey,
       function(data) {
@@ -228,7 +228,7 @@
       });
     }
     else {
-      console.log('please fill out all survey fields');
+      alert('please fill out all survey fields');
     }
    
 
