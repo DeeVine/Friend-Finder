@@ -26,11 +26,4 @@ var friends = [
   }
 ];
 
-// function compatibleFriend() {
-//   for (var i = 0; i < tableArray.length; i++) {
-//     console.log(tableArray[i].scores);
-//   }
-// }
-
-// Note how we export the array. This makes it accessible to other files using require.
 module.exports = friends;

@@ -198,11 +198,9 @@
     //check that every question has been filled out
     for (var i = 0; i < scoreArray.length; i++) {
       if (scoreArray[i] === ''){
-        // console.log('nothing at this position' + i)
         isTrue = false;
       }
       else{
-        // console.log('yay, there\'s a value!' + scoreArray[i]);
         isTrue = true;
       }
     }
@@ -217,11 +215,8 @@
     if(isTrue){
        $.post("/api/friends", newSurvey,
       function(data) {
-        // If a table is available... tell user they are booked.
         if (data) {
-          alert("Yay! Server returned result!");
           $('#myModal').modal('show');
-          console.log(data);
           $('#modal-text').text(data.name);
           $('#modal-img').attr('src', data.photoUrl);
         }
@@ -232,7 +227,7 @@
     }
    
 
-      // This function resets all of the data in our tables. This is intended to let you restart a demo.
+      //set table back to default friends
       function clearFriends() {
         var currentURL = window.location.origin;
         $.ajax({ url: currentURL + "/api/clear", method: "POST" });
