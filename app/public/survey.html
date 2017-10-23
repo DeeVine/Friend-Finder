@@ -27,7 +27,7 @@
 
     <h2>Question 1</h2>
     <h4>I find myself daydreaming often.</h4>
-    <select data-placeholder="" class="chosen-select" id="q1">
+    <select id="q1">
     <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
@@ -39,7 +39,7 @@
     <br>
     <h2>Question 2</h2>
     <h4>I am a picky eater.</h4>
-    <select data-placeholder="" class="chosen-select" id="q2">
+    <select id="q2">
     <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
@@ -51,7 +51,7 @@
     <br>
     <h2>Question 3</h2>
     <h4>I enjoy alcoholic beverages.</h4>
-    <select data-placeholder="" class="chosen-select" id="q3">
+    <select id="q3">
     <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
@@ -63,7 +63,7 @@
     <br>
     <h2>Question 4</h2>
     <h4>I like sports.</h4>
-    <select data-placeholder="" class="chosen-select" id="q4">
+    <select id="q4">
     <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
@@ -75,7 +75,7 @@
     <br>
     <h2>Question 5</h2>
     <h4>I like movies.</h4>
-    <select data-placeholder="" class="chosen-select" id="q5">
+    <select id="q5">
     <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
@@ -87,7 +87,7 @@
     <br>
     <h2>Question 6</h2>
     <h4>I like shopping.</h4>
-    <select data-placeholder="" class="chosen-select" id="q6">
+    <select id="q6">
     <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
@@ -99,7 +99,7 @@
     <br>
     <h2>Question 7</h2>
     <h4>I enjoy hanging out with large groups of people.</h4>
-    <select data-placeholder="" class="chosen-select" id="q7">
+    <select id="q7">
     <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
@@ -111,7 +111,7 @@
     <br>
     <h2>Question 8</h2>
     <h4>I like to sing.</h4>
-    <select data-placeholder="" class="chosen-select" id="q8">
+    <select id="q8">
     <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
@@ -123,7 +123,7 @@
     <br>
     <h2>Question 9</h2>
     <h4>I like video games.</h4>
-    <select data-placeholder="" class="chosen-select" id="q9">
+    <select id="q9">
     <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
@@ -135,7 +135,7 @@
     <br>
     <h2>Question 10</h2>
     <h4>I like the outdoors.</h4>
-    <select data-placeholder="" class="chosen-select" id="q10">
+    <select id="q10">
     <option value=""></option>
       <option value="1">1 (Strongly Disagree)</option>
       <option value="2">2</option>
@@ -172,14 +172,13 @@
     <br>
     <footer class="footer">
       <div class="container">
-        <p><a href="#" id="clear">Reset Friends</a> | <a href="/api/friends">API Friends List</a> | <a href="https://github.com/deevine">GitHub Repo</a></p>
+        <p><a href="#" id="clear">Clear Friends</a> |<a href="#" id="reset">Reset Friends to Sample</a> | <a href="/api/friends">API Friends List</a> | <a href="https://github.com/deevine">GitHub Repo</a></p>
       </div>
     </footer>
   </div>
 </body>
 
 <script>
-
   $('#submit').on('click', function(event) {
     event.preventDefault();
     var isTrue = true; //will use this for data validation
@@ -224,24 +223,35 @@
     }
     else {
       alert('please fill out all survey fields');
-    }
-   
+    }  
+  });
 
-      //set table back to default friends
-      function clearFriends() {
-        var currentURL = window.location.origin;
-        $.ajax({ url: currentURL + "/api/clear", method: "POST" });
-      }
+  //set table back to default friends
+  function clearFriends() {
+    var currentURL = window.location.origin;
+    $.ajax({ url: currentURL + "/api/clear", method: "POST" });
+  }
 
-      $("#clear").on("click", function() {
-        alert("Reseting to default friends list...");
-        clearFriends();
+  $("#clear").on("click", function() {
+    alert("Clearing Friends List");
+    clearFriends();
 
-        // Refresh the page after data is cleared
-        location.reload();
+    // Refresh the page after data is cleared
+    location.reload();
 
-      });
+  });
 
+  function resetFriends() {
+    var currentURL = window.location.origin;
+    $.ajax({ url: currentURL + "/api/reset", method: "POST" });
+  }
+
+  $("#reset").on("click", function() {
+    alert("Reseting to default friends list...");
+    resetFriends();
+
+    // Refresh the page after data is cleared
+    location.reload();
   });
 
 </script>

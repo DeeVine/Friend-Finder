@@ -68,8 +68,13 @@ module.exports = function(app) {
 
   });
 
-//reset database to default sample array of friends
+//empty array completely
   app.post("/api/clear", function() {
+    friends = [];
+  });  
+
+//reset database to default sample array of friends
+  app.post("/api/reset", function() {
     friends = [
       {
         name: "friend1",
@@ -99,4 +104,5 @@ module.exports = function(app) {
     ];
 
   });
+
 };
